@@ -1,0 +1,11 @@
+<launch>
+  
+  <node name="pose_publisher" pkg="slam_apriltag_isam_single" type="pose_publisher" >
+    <param name="image_transport" value="compressed" />
+  </node>
+
+  <node name="isam_receiver" pkg="slam_apriltag_isam_single" type="isam_receiver" launch-prefix="xterm -e" />
+  
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find  slam_apriltag_isam_single)/launch/slam.rviz" />
+
+</launch>
