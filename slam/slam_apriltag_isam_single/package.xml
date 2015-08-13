@@ -4,8 +4,8 @@
   <version>0.0.1</version>
   <description>The slam_apriltag_isam package</description>
 
-  <maintainer email="howardfu@udel.edu">huayu</maintainer>
 
+  <maintainer email="howardfu@udel.edu">huayu</maintainer>
   <license>TODO</license>
 
   <buildtool_depend>catkin</buildtool_depend>
@@ -22,7 +22,6 @@
   <build_depend>pcl_ros</build_depend>
   <build_depend>nav_msgs</build_depend>
   <build_depend>message_generation</build_depend>
-
   <run_depend>message_runtime</run_depend>
   <run_depend>nav_msgs</run_depend>
   <run_depend>pcl_ros</run_depend>
@@ -35,4 +34,8 @@
   <run_depend>sensor_msgs</run_depend>
   <run_depend>std_msgs</run_depend>
 
+
+  <export>
+    <rosdoc config="rosdoc.yaml" />
+  </export>
 </package>

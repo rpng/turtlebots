@@ -1,22 +1,17 @@
 Guide to use slam_apriltag_isam_single
-Currently, the isam library under usr/local cannot be directly included for unknown reason. Therefore, copy the demo_rgbd to the workspace with slam_apriltag_isam_single.
+
 1. install all dependencies at the terminal:
 sudo apt-get install cmake libsuitesparse-dev libeigen3-dev libsdl1.2-dev doxygen graphviz subversion libopencv-dev libv4l-dev
-2. download april_tags using:
-svn co https://svn.csail.mit.edu/apriltags
-3. go to april_tags directry using terminal and make:
-cd apriltags
-make
-4. download isam and install
-(try this if you want to find out the problem):
-svn co https://svn.csail.mit.edu/isam
-cd isam
-make
-sudo make install
-5. copy demo_rgbd and slam_apriltag_isam_single to your catkin workspace.
-6. use catkin_make
-7. run the rosrun turtlebot_bringup minimal.launch and rosrun turtlebot_bringup 3dsensor.launch on the turtlebot machine
-8. run the launch file or run the node one by one on the connected machine or turtlebot.
+
+2. copy slam_apriltag_isam_single to your catkin workspace.
+
+3. use catkin_make
+
+4.1 run the rosbag without using turtlebot
+or
+4.2 run the rosrun turtlebot_bringup minimal.launch and rosrun turtlebot_bringup 3dsensor.launch on the turtlebot machine
+
+5. run the launch file or run the node one by one on the connected machine or turtlebot:
 roslaunch slam_apriltag_isam_single slam.launch
 
 

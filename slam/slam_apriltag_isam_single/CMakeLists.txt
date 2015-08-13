@@ -34,10 +34,6 @@ generate_messages(
 )
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES april_publish
-#  CATKIN_DEPENDS OpenCV cv_bridge genmsg image_transport roscpp rospy sensor_msgs std_msgs
-#  DEPENDS system_lib
 INCLUDE_DIRS include
   CATKIN_DEPENDS  image_transport roscpp sensor_msgs geometry_msgs tf cv_bridge std_msgs pcl_ros nav_msgs message_runtime
   DEPENDS Eigen3
@@ -50,13 +46,8 @@ include_directories(
   ${PCL_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
   ${PROJECT_SOURCE_DIR}/include
-# /usr/local/include
-# ~/apriltags/build/include
 )
-link_directories(
-#   /usr/local/lib # Location when using 'make system_install'
-# ~/apriltags/build/lib
-)
+
 
 add_subdirectory(thirdparty)
 link_libraries(isamlib)
@@ -67,5 +58,5 @@ add_executable(pose_publisher src/pose_publisher.cpp)
 target_link_libraries(pose_publisher ${catkin_LIBRARIES})
 add_executable(isam_receiver src/isam_receiver.cpp)
 target_link_libraries(isam_receiver ${catkin_LIBRARIES}) 
-
+ 
 

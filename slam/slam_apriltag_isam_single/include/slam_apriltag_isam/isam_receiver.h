@@ -1,3 +1,6 @@
+#ifndef ISAM_RECEIVER_H_
+#define ISAM_RECEIVER_H_
+
 #include <ros/ros.h>
 #include <isam/isam.h>
 #include <slam_apriltag_isam_single/PoseStampedArray.h>
@@ -14,40 +17,42 @@ And publish the interactive markers for rviz to display
 */
 class iSAMprocessor{
   public:
-   iSAMprocessor(ros::NodeHandle& nh);//constructer
+   iSAMprocessor(ros::NodeHandle& nh);
    ~iSAMprocessor();
-   void Processing();//function for isam Processing;
-   void Finish(string name);//function to output the map to a text file
+   void Processing();
+   // Function to output the map to a text file
+   void Finish(string name);
  private:
-   // subscribe the information pose_publisher published
+   // Subscribe the information pose_publisher published
    void AprilCallback(const slam_apriltag_isam_single::PoseStampedArrayConstPtr& PoseArray);
-   void InitSlam();//initialize slam
-   void InitMarker();//intialize marker
-   void AddNode(double distance,double angle);//add nodes to slam
-   void AddPoint();//add point to slam
-   void PublishMarker();//publish the map of markers of the trajectory and tags
-   int FindID(string ID);//find point of the tagID correspond to
+   void InitSlam();// Initialize slam
+   void InitMarker();// Intialize marker
+   void AddNode(double distance,double angle);// Add nodes to slam
+   void AddPoint();// Add point to slam
+   void PublishMarker();// Publish the map of markers of the trajectory and tags
+   int FindID(string ID);// Find point of the tagID correspond to
    bool copyEnable;
    ros::Subscriber april_sub;
 
-   // publish the path after isam process
+   // Publish the path after isam process
    ros::Publisher marker_pub;
-   //markers for rviz
+   // Markers for rviz
    visualization_msgs::Marker tags, line_strip;
    Slam slam;
-   vector<Pose2d_Node*> pose_nodes;//turtlebot's pose
-   vector<Point2d_Node*> point_nodes;//AprilTags' point
-   // a array to store IDs of AprilTags
+   vector<Pose2d_Node*> pose_nodes;// Turtlebot's pose
+   vector<Point2d_Node*> point_nodes;// AprilTags' point
+   // A array to store IDs of AprilTags
    vector<string> ID_array;
-   // record for received PoseArray and Odometry
+   // Record for received PoseArray and Odometry
    slam_apriltag_isam_single::PoseStampedArray new_posearray;
-   //information extract from odom
+   // Information extract from odom
    tf::Vector3 old_position;
    tf::Vector3 new_position;
    tf::Quaternion new_orientation;
    tf::Quaternion old_orientation;
-   //noise for slam
+   // Noise for slam
    Noise noise3;
    Noise noise2;
 
 };
+#endif //ISAM_RECEIVER_H_
